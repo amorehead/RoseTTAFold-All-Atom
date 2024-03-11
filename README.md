@@ -20,7 +20,7 @@ RFAA is not accurate for all cases, but produces useful error estimates to allow
 
 <a id="set-up"></a>
 ### Setup/Installation
-1. Install Mamba
+1. Install Mamba (Conda is also fine, just skip)
 ```
 wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
 bash Mambaforge-$(uname)-$(uname -m).sh  # accept all terms and install to the default location
@@ -35,14 +35,16 @@ cd RoseTTAFold-All-Atom
 3. Create Mamba environment
 ```
 mamba env create -f environment.yaml
+#Alternative: conda env create -f environment.yaml
 conda activate RFAA  # NOTE: one still needs to use `conda` to (de)activate environments
 
 cd rf2aa/SE3Transformer/
 pip3 install --no-cache-dir -r requirements.txt
-python3 setup.py install
+pip3 install .
 cd ../../
 ```
 4. Configure signalp6 after downloading a licensed copy of it from https://services.healthtech.dtu.dk/services/SignalP-6.0/
+   Use the fast version.
 ```
 # NOTE: (current) version 6.0h is used in this example, which was downloaded to the current working directory using `wget`
 signalp6-register signalp-6.0h.fast.tar.gz
